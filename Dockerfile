@@ -1,6 +1,5 @@
 ARG BASEIMAGE=alpine:3.12.0
 FROM $BASEIMAGE as base
-LABEL maintainer="Denys Zhdanov <denis.zhdanov@gmail.com>"
 
 RUN true \
  && apk add --update --no-cache \
