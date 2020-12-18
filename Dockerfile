@@ -27,7 +27,6 @@ RUN true \
       postgresql-dev \
       librdkafka \
       jansson \
- && apk add postgresql-dev=9.6.10-r0 --repository=http://dl-cdn.alpinelinux.org/alpine/v3.5/main \    
  && rm -rf \
       /etc/nginx/conf.d/default.conf \
  && mkdir -p \
