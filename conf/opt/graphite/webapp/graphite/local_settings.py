@@ -255,17 +255,19 @@ UTF8_METRICS = os.environ.get('GRAPHITE_UTF8_METRICS', 'false').lower() in ['1',
 #        'PORT': ''
 #    }
 #}
+
+# POSTGRES CONNECT TRIAL
 #
-DATABASES = {
-  'default': {
-    'NAME':     'graphite',
-    'ENGINE':   'django.db.backends.postgresql_psycopg2',
-    'USER':     'graphite',
-    'PASSWORD': 'W}h^R(28>S[Tec%xE8{_EW7{d{gY^$R,ycyQ',
-    'HOST':     'localhost',
-    'PORT':     '5432'
-  }
-}
+# DATABASES = {
+#   'default': {
+#     'NAME':     'graphite',
+#     'ENGINE':   'django.db.backends.postgresql_psycopg2',
+#     'USER':     'graphite',
+#     'PASSWORD': 'W}h^R(28>S[Tec%xE8{_EW7{d{gY^$R,ycyQ',
+#     'HOST':     'localhost',
+#     'PORT':     '5432'
+#   }
+# }
 
 #########################
 # Cluster Configuration #
