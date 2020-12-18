@@ -27,6 +27,7 @@ RUN true \
       postgresql-dev \
       librdkafka \
       jansson \
+ && apk add postgresql-dev=9.6.10-r0 --repository=http://dl-cdn.alpinelinux.org/alpine/v3.5/main \    
  && rm -rf \
       /etc/nginx/conf.d/default.conf \
  && mkdir -p \
@@ -34,7 +35,7 @@ RUN true \
       /var/log/graphite
 
 FROM base as build
-LABEL maintainer="Denys Zhdanov <denis.zhdanov@gmail.com>"
+LABEL maintainer="Subramaniam Natarajan <subramaniam@engineer.com>"
 
 ARG python_binary=python3
 
@@ -147,7 +148,12 @@ RUN mkdir -p /var/log/graphite/ \
 COPY conf/opt/statsd/config/ /opt/defaultconf/statsd/config/
 
 FROM base as production
-LABEL maintainer="Denys Zhdanov <denis.zhdanov@gmail.com>"
+LABEL maintainer="Subramaniam Natarajan <subramaniam@engineer.com>"
+
+# Postgres Env Vars
+ENV POSTGRES_DB graphite
+ENV POSTGRES_USER graphite
+ENV POSTGRES_PASSWORD W}h^R(28>S[Tec%xE8{_EW7{d{gY^$R,ycyQ
 
 ENV STATSD_INTERFACE udp
 
