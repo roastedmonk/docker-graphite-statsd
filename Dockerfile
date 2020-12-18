@@ -32,7 +32,9 @@ RUN true \
       /etc/nginx/conf.d/default.conf \
  && mkdir -p \
       /var/log/carbon \
-      /var/log/graphite
+      /var/log/graphite \
+      /opt/graphite/storage/pgdb
+
 
 FROM base as build
 LABEL maintainer="Subramaniam Natarajan <subramaniam@engineer.com>"
@@ -154,7 +156,7 @@ LABEL maintainer="Subramaniam Natarajan <subramaniam@engineer.com>"
 ENV POSTGRES_DB graphite
 ENV POSTGRES_USER graphite
 ENV POSTGRES_PASSWORD W}h^R(28>S[Tec%xE8{_EW7{d{gY^$R,ycyQ
-
+ENV PGDATA /opt/graphite/storage/pgdb
 ENV STATSD_INTERFACE udp
 
 COPY conf /
