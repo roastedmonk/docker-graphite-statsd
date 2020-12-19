@@ -164,6 +164,8 @@ COPY conf /
 # copy from build image
 COPY --from=build /opt /opt
 
+CMD ["postgres"]
+
 # defaults
 EXPOSE 80 2003-2004 2023-2024 8080 8125/udp 8126 5432
 VOLUME ["/opt/graphite/conf", "/opt/graphite/storage", "/opt/graphite/webapp/graphite/functions/custom", "/etc/nginx", "/opt/statsd/config", "/etc/logrotate.d", "/var/log", "/var/lib/redis"]
