@@ -263,7 +263,7 @@ DATABASES = {
     'NAME':     'graphite',
     'ENGINE':   'django.db.backends.postgresql_psycopg2',
     'USER':     'graphite',
-    'PASSWORD': 'W}h^R(28>S[Tec%xE8{_EW7{d{gY^$R,ycyQ',
+    'PASSWORD': '29345edd-334e-4aac-9a6d-24627401e205',
     'HOST':     'localhost',
     'PORT':     '5432'
   }

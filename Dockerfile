@@ -84,7 +84,7 @@ ARG version=1.1.7
 # Postgres Env Vars
 ENV POSTGRES_DB graphite
 ENV POSTGRES_USER graphite
-ENV POSTGRES_PASSWORD W}h^R(28>S[Tec%xE8{_EW7{d{gY^$R,ycyQ
+ENV POSTGRES_PASSWORD 29345edd-334e-4aac-9a6d-24627401e205
 ENV PGDATA /opt/graphite/storage/pgdb
 
 # install whisper
