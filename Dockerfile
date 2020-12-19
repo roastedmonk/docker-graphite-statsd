@@ -170,7 +170,7 @@ COPY conf/etc/supervisor/supervisord.conf /etc
 COPY conf/entrypoint  /opt/supervisor
 COPY conf/pg-docker-entrypoint.sh  /opt/supervisor
 
-RUN chmod 777 /opt/supervisor/pg-docker-entrypoint.sh && ln -s /opt/supervisor/pg-docker-entrypoint.sh
+RUN chmod 777 /opt/supervisor/pg-docker-entrypoint.sh
 
 # defaults
 EXPOSE 80 2003-2004 2023-2024 8080 8125/udp 8126 5432
