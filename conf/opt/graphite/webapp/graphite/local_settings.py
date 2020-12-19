@@ -262,8 +262,8 @@ DATABASES = {
   'default': {
     'NAME':     'graphite',
     'ENGINE':   'django.db.backends.postgresql_psycopg2',
-    'USER':     'graphite',
-    'PASSWORD': 'W}h^R(28>S[Tec%xE8{_EW7{d{gY^$R,ycyQ',
+    'USER':     os.environ.get('GRAPHITE_POSTGRES_USER'),
+    'PASSWORD': os.environ.get('GRAPHITE_POSTGRES_PASSWORD'),
     'HOST':     os.environ.get('GRAPHITE_POSTGRES_HOST', 'localhost'),
     'PORT':     '5432'
   }

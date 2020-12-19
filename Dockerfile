@@ -152,9 +152,6 @@ FROM base as production
 LABEL maintainer="Subramaniam Natarajan <subramaniam@engineer.com>"
 
 # Postgres Env Vars
-ENV POSTGRES_DB graphite
-ENV POSTGRES_USER graphite
-ENV POSTGRES_PASSWORD W}h^R(28>S[Tec%xE8{_EW7{d{gY^$R,ycyQ
 ENV PGDATA /opt/graphite/storage/pgdb
 ENV STATSD_INTERFACE udp
 
