@@ -27,13 +27,15 @@ RUN true \
       postgresql-dev \
       librdkafka \
       jansson \
+      supervisor \
  && rm -rf \
       /etc/nginx/conf.d/default.conf \
  && mkdir -p \
       /var/log/carbon \
       /var/log/graphite \
-      /opt/graphite/storage/pgdb
-
+      /opt/graphite/storage/pgdb \
+      /etc/supervisord.d \
+      /opt/supervisor
 
 FROM base as build
 LABEL maintainer="Subramaniam Natarajan <subramaniam@engineer.com>"
@@ -164,7 +166,9 @@ COPY conf /
 # copy from build image
 COPY --from=build /opt /opt
 
-CMD ["postgres"]
+COPY conf/etc/supervisor/supervisord.conf /etc
+COPY conf/entrypoint  /opt/supervisor
+COPY conf/pg-docker-entrypoint.sh  /opt/supervisor
 
 # defaults
 EXPOSE 80 2003-2004 2023-2024 8080 8125/udp 8126 5432
@@ -172,4 +176,5 @@ VOLUME ["/opt/graphite/conf", "/opt/graphite/storage", "/opt/graphite/webapp/gra
 
 STOPSIGNAL SIGHUP
 
-ENTRYPOINT ["/entrypoint"]
+#ENTRYPOINT ["/entrypoint"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
