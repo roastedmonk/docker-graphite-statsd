@@ -11,11 +11,18 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
+    environment:
+      POSTGRES_DB: "graphite"
+      POSTGRES_USER: "graphite"
+      POSTGRES_PASSWORD: "29345edd-334e-4aac-9a6d-24627401e205"
+      PGDATA: /opt/graphite/storage/pgdb
+    volumes:
+      - "/opt/graphite/storage/pgdb:/opt/graphite/storage/pgdb"
 
   graphite-metrics:
     image: "omkar2020/graphite-fresh:pg"
     ports:
-      - "8088:80"
+      - "80:80"
       - "18000:8125"
       - "18001:8126"
       - "18002:2003"
@@ -26,4 +33,9 @@ services:
     depends_on:
       - "postgres-db"
     environment:
-      - GRAPHITE_POSTGRES_HOST: postgres-db
+      GRAPHITE_POSTGRES_HOST: "postgres-db"
+      GRAPHITE_POSTGRES_USER: "graphite"
+      GRAPHITE_POSTGRES_PASSWORD: "29345edd-334e-4aac-9a6d-24627401e205"
+    volumes:
+      - "/opt/graphite/data/storage:/opt/graphite/storage"
+      - "/var/log/msmonitoringsetup:/var/log"
