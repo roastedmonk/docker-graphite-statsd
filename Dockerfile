@@ -56,6 +56,8 @@ RUN true \
       librdkafka-dev \
       mysql-dev \
       postgresql-dev \
+      postgresql \
+      postgresql-contrib \
  && curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py \
  && $python_binary /tmp/get-pip.py pip==20.1.1 setuptools==50.3.2 wheel==0.35.1 && rm /tmp/get-pip.py \
  && pip install virtualenv==16.7.10 \
@@ -78,6 +80,14 @@ RUN true \
       django-cockroachdb==2.2.*
 
 ARG version=1.1.7
+
+# Postgres Env Vars
+ENV POSTGRES_DB graphite
+ENV POSTGRES_USER graphite
+ENV POSTGRES_PASSWORD W}h^R(28>S[Tec%xE8{_EW7{d{gY^$R,ycyQ
+ENV PGDATA /opt/graphite/storage/pgdb
+RUN /etc/init.d/postgresql start
+RUN rc-update add postgresql
 
 # install whisper
 ARG whisper_version=${version}
@@ -151,12 +161,6 @@ COPY conf/opt/statsd/config/ /opt/defaultconf/statsd/config/
 FROM base as production
 LABEL maintainer="Subramaniam Natarajan <subramaniam@engineer.com>"
 
-# Postgres Env Vars
-USER postgres
-ENV POSTGRES_DB graphite
-ENV POSTGRES_USER graphite
-ENV POSTGRES_PASSWORD W}h^R(28>S[Tec%xE8{_EW7{d{gY^$R,ycyQ
-ENV PGDATA /opt/graphite/storage/pgdb
 ENV STATSD_INTERFACE udp
 
 COPY conf /
